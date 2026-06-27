@@ -161,12 +161,34 @@
         </section>
       </main>
 
-      <footer>
-        <span>Learning Portal MVP</span>
-        <a href="#">개인정보</a>
-        <a href="#">이용안내</a>
-        <span>v1.0</span>
+      <footer class="site-footer">
+        <div class="footer-main">
+          <strong>Learning Portal MVP</strong>
+          <span>정보관리책임자: [담당 교사명] · [학교명 또는 운영 기관명]</span>
+          <span>문의: [학교 대표 전화 또는 공식 이메일]</span>
+        </div>
+        <div class="footer-links" aria-label="정책 문서">
+          <button class="footer-link" type="button" data-policy="terms">이용약관</button>
+          <button class="footer-link" type="button" data-policy="privacy">개인정보처리방침</button>
+        </div>
+        <p class="copyright">Copyright 2026 Learning Portal. All rights reserved.</p>
       </footer>
+    </div>
+
+    <div class="policy-modal" id="policyModal" aria-hidden="true">
+      <div class="policy-backdrop" data-close-policy></div>
+      <section class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="policyTitle" tabindex="-1">
+        <header class="policy-header">
+          <div>
+            <p class="eyebrow">Policy</p>
+            <h2 id="policyTitle"></h2>
+          </div>
+          <button class="icon-button" type="button" data-close-policy aria-label="팝업 닫기">
+            <i data-lucide="x"></i>
+          </button>
+        </header>
+        <div class="policy-content" id="policyContent"></div>
+      </section>
     </div>
 
     <script src="https://unpkg.com/lucide@latest"></script>
