@@ -85,6 +85,9 @@ const apps = [
 let activeFilter = "all";
 let favorites = new Set(["fraction-lab", "english-word-game"]);
 
+const ethicsGate = document.querySelector("#ethicsGate");
+const ethicsEnterButton = document.querySelector("#ethicsEnterButton");
+const activityShell = document.querySelector("#activityShell");
 const appGrid = document.querySelector("#appGrid");
 const recommendedApps = document.querySelector("#recommendedApps");
 const favoritePanel = document.querySelector("#favoritePanel");
@@ -96,6 +99,13 @@ function refreshIcons() {
   if (window.lucide) {
     window.lucide.createIcons();
   }
+}
+
+function unlockActivity() {
+  ethicsGate.classList.add("is-complete");
+  activityShell.classList.remove("is-locked");
+  activityShell.removeAttribute("aria-hidden");
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function createCard(app) {
@@ -155,9 +165,10 @@ function renderApps() {
 
 function renderRecommended() {
   recommendedApps.innerHTML = "";
-  apps.filter((app) => app.recommended).slice(0, 3).forEach((app) => {
-    recommendedApps.appendChild(createCard(app));
-  });
+  apps
+    .filter((app) => app.recommended)
+    .slice(0, 3)
+    .forEach((app) => recommendedApps.appendChild(createCard(app)));
 }
 
 function renderFavorites() {
@@ -206,6 +217,7 @@ document.addEventListener("click", (event) => {
   renderApps();
 });
 
+ethicsEnterButton.addEventListener("click", unlockActivity);
 searchInput.addEventListener("input", renderApps);
 
 renderRecommended();

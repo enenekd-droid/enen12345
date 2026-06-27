@@ -9,144 +9,165 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="#" aria-label="Learning Portal home">
-          <span class="brand-mark">LP</span>
-          <span>Learning Portal</span>
-        </a>
-        <label class="search-wrap" aria-label="학습 검색">
-          <i data-lucide="search"></i>
-          <input id="searchInput" type="search" placeholder="과목, 학습명, 키워드 검색" />
-        </label>
-        <nav class="top-nav" aria-label="과목 메뉴">
-          <button class="nav-chip active" data-filter="all">전체</button>
-          <button class="nav-chip" data-filter="국어">국어</button>
-          <button class="nav-chip" data-filter="수학">수학</button>
-          <button class="nav-chip" data-filter="사회">사회</button>
-          <button class="nav-chip" data-filter="과학">과학</button>
-          <button class="nav-chip" data-filter="AI">AI</button>
-          <button class="nav-chip" data-filter="영어">영어</button>
-        </nav>
-        <button class="icon-button" aria-label="설정">
-          <i data-lucide="settings"></i>
+    <section class="ethics-gate" id="ethicsGate" aria-labelledby="ethicsTitle">
+      <div class="ethics-shell">
+        <div class="ethics-copy">
+          <p class="eyebrow">AI 윤리 확인</p>
+          <h1 id="ethicsTitle">본 활동을 시작하기 전, 윤리 핵심가이드를 확인해 주세요.</h1>
+          <p>
+            아래 가이드를 읽고 생성형 AI를 주도적이고 정직하게 활용하겠다고 약속하면
+            학습 포털로 이동할 수 있어요.
+          </p>
+        </div>
+        <figure class="ethics-guide-card">
+          <img src="assets/ethics-guide.png" alt="생성형 AI 윤리 핵심가이드 6가지: 주도성, 합목적성, 비판적 검증, 사고의 확장, 안전과 관계, 투명성 윤리" />
+        </figure>
+        <button class="ethics-enter-button" id="ethicsEnterButton" type="button">
+          나는 윤리 핵심가이드를 빠짐없이 읽고 이를 실천하겠습니다.
         </button>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">초등 3-6학년 맞춤 학습</p>
-          <h1>오늘은 어떤 배움을 시작해볼까요?</h1>
-          <p class="hero-text">추천 학습, 과목별 앱, 최근 기록을 한곳에서 확인하고 바로 이어서 공부할 수 있어요.</p>
-          <div class="hero-actions">
-            <a class="primary-button" href="#apps"><i data-lucide="play"></i> 학습 시작하기</a>
-            <a class="secondary-button" href="#status"><i data-lucide="bar-chart-3"></i> 현황 보기</a>
-          </div>
+    <div class="activity-shell is-locked" id="activityShell" aria-hidden="true">
+      <header class="site-header">
+        <div class="header-inner">
+          <a class="brand" href="#" aria-label="Learning Portal home">
+            <span class="brand-mark">LP</span>
+            <span>Learning Portal</span>
+          </a>
+          <label class="search-wrap" aria-label="학습 검색">
+            <i data-lucide="search"></i>
+            <input id="searchInput" type="search" placeholder="과목, 학습명, 키워드 검색" />
+          </label>
+          <nav class="top-nav" aria-label="과목 메뉴">
+            <button class="nav-chip active" data-filter="all">전체</button>
+            <button class="nav-chip" data-filter="국어">국어</button>
+            <button class="nav-chip" data-filter="수학">수학</button>
+            <button class="nav-chip" data-filter="사회">사회</button>
+            <button class="nav-chip" data-filter="과학">과학</button>
+            <button class="nav-chip" data-filter="AI">AI</button>
+            <button class="nav-chip" data-filter="영어">영어</button>
+          </nav>
+          <button class="icon-button" aria-label="설정">
+            <i data-lucide="settings"></i>
+          </button>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <img src="assets/learning-hero.png" alt="" />
-        </div>
-      </section>
+      </header>
 
-      <section class="status-strip" id="status" aria-label="학습 현황">
-        <article>
-          <i data-lucide="check-circle-2"></i>
-          <span>완료 학습</span>
-          <strong>18개</strong>
-        </article>
-        <article>
-          <i data-lucide="star"></i>
-          <span>평균 점수</span>
-          <strong>92점</strong>
-        </article>
-        <article>
-          <i data-lucide="timer"></i>
-          <span>오늘 학습</span>
-          <strong>42분</strong>
-        </article>
-        <article>
-          <i data-lucide="flame"></i>
-          <span>이번 주</span>
-          <strong>5일</strong>
-        </article>
-      </section>
-
-      <section class="section-block">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Recommended</p>
-            <h2>오늘의 추천 학습</h2>
-          </div>
-          <button class="text-button" data-filter="recommended">추천만 보기 <i data-lucide="arrow-right"></i></button>
-        </div>
-        <div class="recommend-grid" id="recommendedApps"></div>
-      </section>
-
-      <section class="section-block" id="apps">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">All Apps</p>
-            <h2>학습 앱 모음</h2>
-          </div>
-          <p class="result-count" id="resultCount"></p>
-        </div>
-        <div class="app-grid" id="appGrid"></div>
-        <p class="empty-state" id="emptyState">검색 결과가 없어요. 다른 키워드나 과목을 선택해보세요.</p>
-      </section>
-
-      <section class="two-column">
-        <div class="section-block compact">
-          <div class="section-head">
-            <div>
-              <p class="eyebrow">Recent</p>
-              <h2>최근 학습</h2>
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">초등 3-6학년 맞춤 학습</p>
+            <h1>오늘은 어떤 배움을 시작해볼까요?</h1>
+            <p class="hero-text">추천 학습, 과목별 앱, 최근 기록을 한곳에서 확인하고 바로 이어서 공부할 수 있어요.</p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#apps"><i data-lucide="play"></i> 학습 시작하기</a>
+              <a class="secondary-button" href="#status"><i data-lucide="bar-chart-3"></i> 현황 보기</a>
             </div>
           </div>
-          <div class="recent-list">
-            <article>
-              <span class="dot blue"></span>
-              <div>
-                <strong>분수의 덧셈</strong>
-                <p>어제 · 96점 · 18분</p>
-              </div>
-            </article>
-            <article>
-              <span class="dot green"></span>
-              <div>
-                <strong>식물의 한살이</strong>
-                <p>6월 25일 · 89점 · 21분</p>
-              </div>
-            </article>
-            <article>
-              <span class="dot purple"></span>
-              <div>
-                <strong>AI와 패턴 찾기</strong>
-                <p>6월 24일 · 완료 · 15분</p>
-              </div>
-            </article>
+          <div class="hero-art" aria-hidden="true">
+            <img src="assets/learning-hero.png" alt="" />
           </div>
-        </div>
+        </section>
 
-        <div class="section-block compact">
+        <section class="status-strip" id="status" aria-label="학습 현황">
+          <article>
+            <i data-lucide="check-circle-2"></i>
+            <span>완료 학습</span>
+            <strong>18개</strong>
+          </article>
+          <article>
+            <i data-lucide="star"></i>
+            <span>평균 점수</span>
+            <strong>92점</strong>
+          </article>
+          <article>
+            <i data-lucide="timer"></i>
+            <span>오늘 학습</span>
+            <strong>42분</strong>
+          </article>
+          <article>
+            <i data-lucide="flame"></i>
+            <span>이번 주</span>
+            <strong>5일</strong>
+          </article>
+        </section>
+
+        <section class="section-block">
           <div class="section-head">
             <div>
-              <p class="eyebrow">Favorites</p>
-              <h2>즐겨찾기</h2>
+              <p class="eyebrow">Recommended</p>
+              <h2>오늘의 추천 학습</h2>
+            </div>
+            <button class="text-button" data-filter="recommended">추천만 보기 <i data-lucide="arrow-right"></i></button>
+          </div>
+          <div class="recommend-grid" id="recommendedApps"></div>
+        </section>
+
+        <section class="section-block" id="apps">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">All Apps</p>
+              <h2>학습 앱 모음</h2>
+            </div>
+            <p class="result-count" id="resultCount"></p>
+          </div>
+          <div class="app-grid" id="appGrid"></div>
+          <p class="empty-state" id="emptyState">검색 결과가 없어요. 다른 키워드나 과목을 선택해보세요.</p>
+        </section>
+
+        <section class="two-column">
+          <div class="section-block compact">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Recent</p>
+                <h2>최근 학습</h2>
+              </div>
+            </div>
+            <div class="recent-list">
+              <article>
+                <span class="dot blue"></span>
+                <div>
+                  <strong>분수의 덧셈</strong>
+                  <p>어제 · 96점 · 18분</p>
+                </div>
+              </article>
+              <article>
+                <span class="dot green"></span>
+                <div>
+                  <strong>식물의 한살이</strong>
+                  <p>6월 25일 · 89점 · 21분</p>
+                </div>
+              </article>
+              <article>
+                <span class="dot purple"></span>
+                <div>
+                  <strong>AI와 패턴 찾기</strong>
+                  <p>6월 24일 · 완료 · 15분</p>
+                </div>
+              </article>
             </div>
           </div>
-          <div class="favorite-panel" id="favoritePanel"></div>
-        </div>
-      </section>
-    </main>
 
-    <footer>
-      <span>Learning Portal MVP</span>
-      <a href="#">개인정보</a>
-      <a href="#">이용안내</a>
-      <span>v1.0</span>
-    </footer>
+          <div class="section-block compact">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Favorites</p>
+                <h2>즐겨찾기</h2>
+              </div>
+            </div>
+            <div class="favorite-panel" id="favoritePanel"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>Learning Portal MVP</span>
+        <a href="#">개인정보</a>
+        <a href="#">이용안내</a>
+        <span>v1.0</span>
+      </footer>
+    </div>
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
